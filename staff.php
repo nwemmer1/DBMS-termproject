@@ -35,6 +35,7 @@ else
 	echo "There was an ERROR: We were not able to execute $sql. " . mysqli_error($conn);
 }
 
+
 mysqli_close($conn);
 
 ?>
