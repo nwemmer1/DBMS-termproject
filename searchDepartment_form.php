@@ -5,23 +5,23 @@
         <meta charset="utf-8">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Search by Last Name</title>
+        <title>List Department Information</title>
         <link rel="stylesheet" href="css/styles.css">
         <link rel="author" href="humans.txt">
     </head>
     <body>
 
-        <form action="search.php" method="post">
+        <form action="searchDepo.php" method="post">
         
         <p>
-            Type in the last name of the person you are looking for.
+            Type in the department's name you would like to display information for.
             <br>
-            <input type="text" name="last_name" required>
+            <input type="text" name="department" required>
             <br>
             <br>
         </p>
-        <input type="submit" value="Search">
-
+        <input type="submit" value="Submit">
+  
 </form>
         
 
