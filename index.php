@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
@@ -16,7 +16,7 @@
         <a href="searchOffice_form.php"><button>Search by room number</button></a>
         <br>
         <br>
-        <a href="search_form.php"><button>Search by Last Name</button></a>
+        <a href="searchName_form.php"><button>Search by Last Name</button></a>
         <br>
         <br>
         <a href="searchDepartment_form.php"><button>Display Department Information</button></a>
