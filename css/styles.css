@@ -92,10 +92,10 @@ input[type=submit] {
 /*TABLE*/
 
 table {
-  margin: 15px;
+  margin: auto;
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
-  width: 100%;
+  width: 95%;
   color: black;
 }
 
