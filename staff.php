@@ -7,7 +7,8 @@ $conn = mysqli_connect("127.0.0.1:3306", "dbms-staff", "admin", "demo");
 if (!$conn) {
     echo "connection failed";
 }
-echo "Connected successfully";
+echo "Connected successfully<br>";
+
 
 $employee_id = mysqli_real_escape_string($conn,$_REQUEST['id']);
 $first_name = mysqli_real_escape_string($conn,$_REQUEST['first_name']);
@@ -28,7 +29,8 @@ $sql = "INSERT INTO Employees (employee_id,first_name,last_name,phone_number,tit
 
 if(mysqli_query($conn, $sql))
 {
-	echo "The record was added successfully";
+	echo "The record was added successfully <br>";
+
 }
 else
 {
@@ -39,3 +41,4 @@ else
 mysqli_close($conn);
 
 ?>
+<a href="index.php"><button>Home</button></a>
