@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="css/styles.css">
+<?php include 'nav.php' ?>
 <?php
 
 // Create connection
@@ -42,3 +44,5 @@ mysqli_close($conn);
 
 ?>
 <a href="index.php"><button>Home</button></a>
+
+<?php include 'footer.php' ?>

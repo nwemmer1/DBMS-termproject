@@ -1,5 +1,4 @@
-
-<!doctype html>
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
@@ -10,20 +9,23 @@
         <link rel="author" href="humans.txt">
     </head>
     <body>
-
-        <form action="searchDepo.php" method="post">
-        
-        <p>
-            Type in the department's name you would like to display information for.
-            <br>
-            <input type="text" name="department" required>
-            <br>
-            <br>
-        </p>
-        <input type="submit" value="Submit">
-  
-</form>
-        
-
+<?php include 'nav.php' ?>
+<div class="container"  method="post">
+  <h1 style="color: black;">Display Department Information</h1> 
+  <form action="searchDepo.php">
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">Type in the last name of the person you are looking for.</label>
+      </div>
+      <div class="col-75">
+        <input type="text" name="department" required>
+      </div>
+    </div>
+    <div class="row">
+      <input type="submit" value="Submit">
+    </div>
+  </form>
+</div>       
+<?php include 'footer.php' ?>
     </body>
 </html>

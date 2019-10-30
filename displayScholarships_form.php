@@ -1,5 +1,4 @@
-
-<!doctype html>
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
@@ -10,42 +9,30 @@
         <link rel="author" href="humans.txt">
     </head>
     <body>
-
-        <form action="displayScholarships.php" method="post">
-        
-        <p>
-            Would you like to search by name or Department?
-            <br>
-            <input type="radio" name="action" value="name_search" checked> Name
+    <?php include 'nav.php' ?>
+<div class="container">
+  <h1 style="color: black;">Search for Scholarships</h1> 
+  <form action="displayScholarships.php" method="post">
+    <p> Would you like to search by name or Department?</p>
+    <div class="row">
+      <div class="col-25">
+        <input type="radio" name="action" value="name_search" checked> Name
             <input type="radio" name="action" value="department_search"> Department
-            <input type="text" name="search_for" required>
-            <br>
-            If searching by Department, please use the department_id referenced below.
-            <br>
-        </p>
-        <input type="submit" value="Search">
-
-
-        <br>
-        <br>
-        <br>
-         <table>
-            <tr>
-                <td>
-                    Dept Id: </td> <td> Dept Name </td> 
-            </tr><tr>
-                <td> 1 </td> <td> Computer Science</td>
-            </tr><tr>
-                <td> 2 </td> <td> Mathematics </td>
-            </tr><tr> 
-                <td> 3 </td> <td> University of Akron (total) </td>
-            </tr>
-
-        </table>
-
-
-</form>
-        
-
+      </div>
+      <div class="col-75">
+        <input type="text" name="search_for" required>
+      </div>
+    </div>
+    <div class="row">
+      <input type="submit" value="Search">
+    </div>
+    <p>If searching by Department, please use the department_id referenced below.</p>
+    <p style="font-size: 1.2em;">Dept Id::Dept Name<br>
+        1::Computer Science<br>
+        2::Mathematics<br>
+        3::University of Akron</p>
+  </form>
+</div>         
+<?php include 'footer.php' ?>
     </body>
 </html>

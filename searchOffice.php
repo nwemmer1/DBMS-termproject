@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="css/styles.css">
+<?php include 'nav.php' ?>
 <?php
 $conn = mysqli_connect("127.0.0.1:3306", "dbms-staff", "admin", "demo");
 
@@ -49,3 +51,4 @@ for ($row_num = 0; $row_num < $num_rows; $row_num++)
 }
 print "</table>";
 ?>
+<?php include 'footer.php' ?>

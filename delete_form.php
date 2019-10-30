@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="css/styles.css">
+<?php include 'nav.php' ?>
 <?php  
 $conn = mysqli_connect("127.0.0.1:3306", "dbms-staff", "admin", "demo");
 
@@ -42,7 +44,7 @@ for ($row_num = 0; $row_num < $num_rows; $row_num++)
     $values = array_values($row);
     for ($index = 0; $index < $num_fields; $index++){
         $value = htmlspecialchars($values[2 * $index + 1]);
-        print "<th>" . $value . "</th> ";
+        print "<td>" . $value . "</td> ";
     }
     print "</tr>";
     $row = mysqli_fetch_array($result);
@@ -51,19 +53,20 @@ print "</table>";
 
 
 ?>
-
-        <form action="delete.php" method="post">
-        
-        <p>
-			Please type the ID of the Employee you'd like to delete.
-            <br>
-            <input type="text" name="deleted_value" required>
-            <br>
-            <br>
-        </p>
-        <input type="submit" value="Delete">
-
-</form>
-        
-
-<input type="text" name="deleted_value">
+<div class="container"  method="post">
+  <h1 style="color: black;">Delete an Employee entry</h1> 
+  <form action="delete.php" method="post">
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">Please type the ID of the Employee you'd like to delete.</label>
+      </div>
+      <div class="col-75">
+        <input type="text" name="deleted_value" required>
+      </div>
+    </div>
+    <div class="row">
+      <input type="submit" value="Delete">
+    </div>
+  </form>
+</div> 
+<?php include 'footer.php' ?>

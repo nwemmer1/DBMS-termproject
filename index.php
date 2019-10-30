@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
@@ -27,6 +27,7 @@
             margin-bottom: 30px;
         }
         button{
+            margin: 10px 5px 10px 5px;
             font-size: 1.05em;
         }
     </style>
@@ -36,31 +37,22 @@
 
         <img style="height: 500px" src="images/Akron_seal.png">
         <br>
-
+        <div style="width: 80%; margin: auto;">
     	<a href="add_entry.php"><button>Add a Faculty Member</button></a>
         <a href="searchOffice_form.php"><button>Search by room number</button></a>
         <a href="searchName_form.php"><button>Search by Last Name</button></a>
         <a href="searchDepartment_form.php"><button>Display Department Information</button></a>
         <a href="displayScholarships_form.php"><button>Search for Scholarships</button></a>
-
-        <br>
-        <br>
         <a href="displayAllEmployees.php"><button>Display all Employees</button></a>
-        <br>
-        <br>
         <a href="update_form.php"><button>Update an Employee entry</button></a>
-        <br>
-        <br>
         <a href="delete_form.php"><button>Delete an Employee entry</button></a>
+        </div>
         <br>
         <br>
 
-        <br>
-        <br>
-        <footer>
-            Nathan Wemmer Jacob Hanchett
-        </footer>
+        <p style="color: white;">Stage 4: Initial Demo</p>
 
 
+        <?php include 'footer.php' ?>
     </body>
 </html>

@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="css/styles.css">
+<?php include 'nav.php' ?>
 <?php 
 $conn = mysqli_connect("127.0.0.1:3306", "dbms-staff", "admin", "demo");
 
@@ -54,7 +56,7 @@ for ($row_num = 0; $row_num < $num_rows; $row_num++)
     $values = array_values($row);
     for ($index = 0; $index < $num_fields; $index++){
         $value = htmlspecialchars($values[2 * $index + 1]);
-        print "<th>" . $value . "</th> ";
+        print "<td>" . $value . "</td> ";
     }
     print "</tr>";
     $row = mysqli_fetch_array($result);
@@ -66,3 +68,4 @@ print "</table>";
 
  ?>
  <a href="index.php"><button>Home</button></a>
+ <?php include 'footer.php' ?>

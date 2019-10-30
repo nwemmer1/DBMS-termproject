@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="css/styles.css">
+<?php include 'nav.php' ?>
 <?php 
 
 
@@ -48,10 +50,11 @@ for ($row_num = 0; $row_num < $num_rows; $row_num++)
     $values = array_values($row);
     for ($index = 0; $index < $num_fields; $index++){
         $value = htmlspecialchars($values[2 * $index + 1]);
-        print "<th>" . $value . "</th> ";
+        print "<td>" . $value . "</td> ";
     }
     print "</tr>";
     $row = mysqli_fetch_array($result);
 }
 print "</table>";
 ?>
+<?php include 'footer.php' ?>
