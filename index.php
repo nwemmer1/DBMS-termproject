@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
     <head>
         <meta charset="utf-8">
@@ -45,9 +45,22 @@
 
         <br>
         <br>
+        <a href="displayAllEmployees.php"><button>Display all Employees</button></a>
+        <br>
+        <br>
+        <a href="update_form.php"><button>Update an Employee entry</button></a>
+        <br>
+        <br>
+        <a href="delete_form.php"><button>Delete an Employee entry</button></a>
+        <br>
+        <br>
+
+        <br>
+        <br>
         <footer>
             Nathan Wemmer Jacob Hanchett
         </footer>
+
 
     </body>
 </html>
