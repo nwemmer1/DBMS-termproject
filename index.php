@@ -23,36 +23,33 @@
             font-size: 2.5em;
             color: white;
         }
-        img{
-            margin-bottom: 30px;
-        }
         button{
             margin: 10px 5px 10px 5px;
             font-size: 1.05em;
         }
     </style>
     <body>
-    	<h1>University of Akron</h1>
-        <h2><span style="color: #FFD61A;">STEM</span> Faculty Directory</h2>
-
-        <img style="height: 500px" src="images/Akron_seal.png">
-        <br>
-        <div style="width: 80%; margin: auto;">
-    	<a href="add_entry.php"><button>Add a Faculty Member</button></a>
-        <a href="searchOffice_form.php"><button>Search by room number</button></a>
-        <a href="searchName_form.php"><button>Search by Last Name</button></a>
-        <a href="searchDepartment_form.php"><button>Display Department Information</button></a>
-        <a href="displayScholarships_form.php"><button>Search for Scholarships</button></a>
-        <a href="displayAllEmployees.php"><button>Display all Employees</button></a>
-        <a href="update_form.php"><button>Update an Employee entry</button></a>
-        <a href="delete_form.php"><button>Delete an Employee entry</button></a>
+        <?php include 'config.php' ?>
+        <?php include 'templates/nav.php' ?>
+    	
+        <div class="mainContainer">
+            <div class="searchLeft">
+                <form method="post">
+                    <input type="submit" name="displayAllEmployees" value="Display All Employees">
+                </form>
+            </div>
+            <div class="resultsRight">
+                <p>results</p>
+                <div id="dbResults">
+                    
+                </div>
+            </div>
         </div>
-        <br>
-        <br>
 
-        <p style="color: white;">Stage 4: Initial Demo</p>
+        <p style="color: white;">Stage 5: Final Demo</p>
 
 
-        <?php include 'footer.php' ?>
+        <?php include 'templates/footer.php' ?>
     </body>
+    <script type="text/javascript" src="scripts/updatePage.js"></script>
 </html>
