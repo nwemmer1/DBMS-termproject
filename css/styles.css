@@ -1,0 +1,178 @@
+body {
+	background-color: #336EA1;
+	margin: 0;
+	color: white;
+}
+
+.mainContainer{
+  width: 90%;
+  margin: 50px auto 0 auto;
+  display: flex;
+  background-color: white;
+  opacity: 87%;
+  color: black;
+  padding: 15px;
+  border: 1px solid black;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.resultsRight{
+  width: 75%;
+}
+
+.searchLeft{
+  width: 25%;
+  border-right: 1px solid grey;
+}
+
+footer{
+	text-align: center;
+	background-color: #023E73;
+	color: white;
+	padding: 50px;
+	font-size: 12;
+	/*padding-bottom: 25%;*/
+  display: flex;
+  justify-content: space-around;
+}
+
+footer h2 {
+  font-size: 1.9em;
+}
+
+footer a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.25em;
+}
+
+.circleImg img {
+  padding: 25% 5px;
+}
+
+.circleImg {
+  background-color: grey;
+  height: 225px;
+  width: 225px;
+  border-radius: 50%;
+}
+
+h1{
+	color: white;
+}
+nav{
+	background-color: white;
+	padding: 10px;
+	display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.homeLink div {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.homeLink a{
+  color: #023E73;
+  text-decoration: none;
+}
+
+
+
+/* Style inputs, select elements and textareas */
+input[type=text], input[type=number]{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+/* Style the label to display next to the inputs */
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+/* Style the submit button */
+input[type=submit] {
+  margin-top: 10px;
+  cursor: pointer;
+  float: right;
+}
+
+/* Style the container */
+.container {
+  margin: auto;
+  margin-top: 75px;
+  margin-bottom: 75px;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  width: 50%;
+  color: black;
+}
+
+/* Floating column for labels: 25% width */
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+  border-right: 2px solid grey;
+}
+
+/* Floating column for inputs: 75% width */
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
+/*TABLE*/
+
+table {
+  margin: auto;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 95%;
+  color: black;
+}
+
+td, th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+tr{
+	background-color: white;
+}
+
+tr:nth-child(even){background-color: #f2f2f2;}
+
+tr:hover {background-color: #ddd;}
+
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #D6B315;
+  color: black;
+}
