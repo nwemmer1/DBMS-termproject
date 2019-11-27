@@ -16,6 +16,10 @@ $sql = "SELECT employee_id AS 'ID',  first_name AS 'First Name', last_name AS 'L
 $result = mysqli_query($conn,$sql);
 
 
+$sql2 = "SELECT room_location FROM offices";
+$result2 = mysqli_query($conn,$sql2);
+
+
 
 if(!$result)
 {
@@ -42,10 +46,25 @@ for ($row_num = 0; $row_num < $num_rows; $row_num++)
 {
     print "<tr align = 'center'>";
     $values = array_values($row);
-    for ($index = 0; $index < $num_fields; $index++){
+
+
+    for ($index = 0; $index < $num_fields; $index++)
+    {
         $value = htmlspecialchars($values[2 * $index + 1]);
-        print "<td>" . $value . "</td> ";
+
+        if($index == $num_fields-1)
+        {
+            $valpath = str_replace(' ', '_', $value);
+
+            $val = "<td><p id='tooltip'><a class='office_map' href='images/" . $valpath . ".jpg'>" . $value . "<span><img src='images/" . $valpath . ".jpg'></span></a></p></td>";
+        }
+        else
+        {
+            print "<td>" . $value . "</td> ";
+        }
     }
+    
+
     print "</tr>";
     $row = mysqli_fetch_array($result);
 }
