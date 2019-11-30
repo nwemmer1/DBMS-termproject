@@ -16,10 +16,6 @@ $sql = "SELECT employee_id AS 'ID',  first_name AS 'First Name', last_name AS 'L
 $result = mysqli_query($conn,$sql);
 
 
-$sql2 = "SELECT room_location FROM offices";
-$result2 = mysqli_query($conn,$sql2);
-
-
 
 if(!$result)
 {
@@ -56,7 +52,8 @@ for ($row_num = 0; $row_num < $num_rows; $row_num++)
         {
             $valpath = str_replace(' ', '_', $value);
 
-            $val = "<td><p id='tooltip'><a class='office_map' href='images/" . $valpath . ".jpg'>" . $value . "<span><img src='images/" . $valpath . ".jpg'></span></a></p></td>";
+            $val = "<td><div id='popup'><a>" . $value . "<span><img class='imghov' src='images/" . $valpath . ".jpg'></span></a></div></td>";
+            print $val;
         }
         else
         {
