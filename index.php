@@ -8,48 +8,82 @@
         <link rel="stylesheet" href="css/styles.css">
         <link rel="author" href="humans.txt">
     </head>
-    <style type="text/css">
-        body{
-            text-align: center;
-            background-color: #336EA1;
-        }
-        h1{
-            font-size: 5em;
-            color: white;
-            margin-bottom: 0px;
-        }
-        h2{
-            margin-top: 5px;
-            font-size: 2.5em;
-            color: white;
-        }
-        button{
-            margin: 10px 5px 10px 5px;
-            font-size: 1.05em;
-        }
-    </style>
-    <body>
+       <body>
         <?php include 'config.php' ?>
         <?php include 'templates/nav.php' ?>
     	
         <div class="mainContainer">
             <div class="searchLeft">
                 <form method="post">
+                    <h1>Search</h1>
+                    <label>
+                        <input type="radio" name="search" value="byRoom" checked>Room
+                    </label>
+                    <label>
+                        <input type="radio" name="search" value="byLastname">Lastname
+                    </label>
+                    <label>
+                        <input type="radio" name="search" value="byDepot">Depatment
+                    </label>
+                    <label>
+                        <input type="radio" name="search" value="byScholarship">Scholarship
+                    </label>
+                    <input type="text" name="searchBar">
+                    <input type="submit" name="searchEnter" value="Search">
                     <input type="submit" name="displayAllEmployees" value="Display All Employees">
                 </form>
             </div>
             <div class="resultsRight">
-                <p>results</p>
-                <div id="dbResults">
-                    
+                <h1>Results</h1>
+                <div>
+                    <div class="dbResults">
+                        <div class="scrollmenu">
+                    <?php 
+
+                    if (isset($_POST['displayAllEmployees'])) {
+                        displayAllEmployees(null);
+                    }
+                    if (isset($_POST['searchEnter'])) {
+                        $searchVar = $_POST['searchBar'];
+                        echo $searchVar;
+                        $sql = " ";
+                        if ($_POST['search'] == 'byRoom') {
+                            $sql = "SELECT * FROM Employees WHERE office_number='$searchVar'";
+                        }
+                        if ($_POST['search'] == 'byLastname') {
+                            $sql = "SELECT * FROM Employees WHERE last_name='$searchVar'";
+                        }
+                        if ($_POST['search'] == 'byDepot') {
+                            $sql = "SELECT * FROM Employees WHERE department='$searchVar'";
+                        }
+                        if ($_POST['search'] == 'byScholarship') {
+                            if (strcasecmp($searchVar, 'Computer Science') == 0) {
+                                $sql = "SELECT * FROM Scholarships WHERE department_id = '1'";
+                            }
+                            else if (strcasecmp($searchVar, 'Mathematics') == 0) {
+                                $sql = "SELECT * FROM Scholarships WHERE department_id = '2'";
+                            }
+                            else if (strcasecmp($searchVar, 'University of Akron') == 0) {
+                                $sql = "SELECT * FROM Scholarships WHERE department_id = '3'";
+                            }
+                            else {
+                                $sql = "SELECT * FROM Scholarships WHERE scholarship_name='$searchVar'";
+                            }
+                        }
+                        echo $sql;
+                        displayAllEmployees($sql);
+                    }
+
+
+                    ?>
+                </div>
+                </div>
                 </div>
             </div>
         </div>
 
         <p style="color: white;">Stage 5: Final Demo</p>
 
-
         <?php include 'templates/footer.php' ?>
     </body>
-    <script type="text/javascript" src="scripts/updatePage.js"></script>
 </html>

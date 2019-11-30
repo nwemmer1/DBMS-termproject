@@ -59,14 +59,11 @@
     <div style="margin: auto 10px auto 0; " class="dropdown">
     <button class="dropbtn">Menu</button>
         <div class="dropdown-content">
-            <a href="add_entry.php">Add a Faculty Member</a>
-            <a href="searchOffice_form.php">Search by room number</a>
-            <a href="searchName_form.php">Search by Last Name</a>
-            <a href="searchDepartment_form.php">Display Department Information</a>
-            <a href="displayScholarships_form.php">Search for Scholarships</a>
-            <a href="displayAllEmployees.php">Display all Employees</a>
-            <a href="update_form.php">Update an Employee entry</a>
-            <a href="delete_form.php">Delete an Employee entry</a>>
+            <a href="index.php">Search</a>
+            <a href="insert.php">Insert</a>
+            <a href="update.php">Update</a>
+            <a href="delete.php">Delete</a>
+            <a href="Stage_4/index.php">Stage 4: Initial Demo</a>
         </div>
     </div>
     
