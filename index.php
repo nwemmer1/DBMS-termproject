@@ -8,48 +8,49 @@
         <link rel="stylesheet" href="css/styles.css">
         <link rel="author" href="humans.txt">
     </head>
-    <style type="text/css">
-        body{
-            text-align: center;
-            background-color: #336EA1;
-        }
-        h1{
-            font-size: 5em;
-            color: white;
-            margin-bottom: 0px;
-        }
-        h2{
-            margin-top: 5px;
-            font-size: 2.5em;
-            color: white;
-        }
-        button{
-            margin: 10px 5px 10px 5px;
-            font-size: 1.05em;
-        }
-    </style>
-    <body>
+       <body>
         <?php include 'config.php' ?>
         <?php include 'templates/nav.php' ?>
     	
         <div class="mainContainer">
             <div class="searchLeft">
                 <form method="post">
+                    <h1>Search</h1>
+                    <label>
+                        <input type="radio" name="search" value="byRoom">Room
+                    </label>
+                    <label>
+                        <input type="radio" name="search" value="byLastname">Lastname
+                    </label>
+                    <label>
+                        <input type="radio" name="search" value="byDepot">Depatment
+                    </label>
+                    <label>
+                        <input type="radio" name="search" value="byScholarship">Scholarship
+                    </label>
+                    <input type="text" name="searchBar">
                     <input type="submit" name="displayAllEmployees" value="Display All Employees">
                 </form>
             </div>
             <div class="resultsRight">
-                <p>results</p>
-                <div id="dbResults">
-                    
+                <h1>Results</h1>
+                <div>
+                    <div class="dbResults">
+                    <?php 
+
+                    if (isset($_POST['displayAllEmployees'])) {
+                        displayAllEmployees(null);
+                    }
+
+
+                    ?>
+                </div>
                 </div>
             </div>
         </div>
 
         <p style="color: white;">Stage 5: Final Demo</p>
 
-
         <?php include 'templates/footer.php' ?>
     </body>
-    <script type="text/javascript" src="scripts/updatePage.js"></script>
 </html>
