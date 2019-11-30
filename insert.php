@@ -85,6 +85,7 @@
                 <h1>Results</h1>
                 <div>
                     <div class="dbResults">
+                        <div class="scrollmenu">
                         <div id="rmallemployees">
                             <?php  displayAllEmployees(null); ?>
                         </div>
@@ -95,6 +96,7 @@
                         }
 
                          ?>
+                     </div>
                     </div>
                 </div>
             </div>
