@@ -1,3 +1,55 @@
+<style>
+#popup { color: #000; background-color: #c0c0c0; }
+
+#popup a, #popup a:visited {
+  position: relative;
+  display: block;
+  width: 130px;
+  line-height: 30px;
+  text-align: right;
+  padding: 0 10px;
+  margin: 0;
+  border: 1px solid #666;
+  text-decoration: none;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+#popup a span {
+  display: none;
+}
+
+#popup a:hover { 
+  background-color: #e9e9e2; 
+}
+
+/* the IE correction rule */
+#popup a:hover  {
+  color: #f00; 
+  background-color: #e9e9e2;
+  text-indent: 0; /* added the default value */
+}
+
+#popup a:hover span {
+  display: block;
+  position: absolute;
+  top: 0px;
+  right: 170px;
+  width: 320px;
+  margin: 0px;
+  padding: 10px;
+  color: #335500;
+  font-weight: normal;
+  background: #e5e5e5;
+  text-align: left;
+  border: 1px solid #666;
+}
+#popup img{
+  width:500px;
+  height:500px;
+}
+</style>
+
 <?php 
 
 function displayAllEmployees($sql)
@@ -50,7 +102,8 @@ function displayAllEmployees($sql)
 	        {
 	            $valpath = str_replace(' ', '_', $value);
 
-	            $val = "<td><p id='tooltip'><a class='office_map' href='images/" . $valpath . ".jpg'>" . $value . "<span><img src='images/" . $valpath . ".jpg'></span></a></p></td>";
+	            $val = "<td><div id='popup'><a>" . $value . "<span><img class='imghov' src='images/" . $valpath . ".jpg'></span></a></div></td>";
+            	print $val;
 	        }
 	        else
 	        {
