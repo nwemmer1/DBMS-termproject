@@ -28,7 +28,7 @@
                     <label>
                         <input type="radio" name="search" value="byScholarship">Scholarship
                     </label><br>
-                    <input type="text" name="searchBar">
+                    <input type="text" name="searchBar"><br>
                     <input type="submit" name="searchEnter" value="Search">
                     <input type="submit" name="dbSelect" value="Display All Employees">
                 </form>

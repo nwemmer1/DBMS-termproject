@@ -1,5 +1,5 @@
 <?php // DBMS config
-ini_set( "display_errors", true );
+ini_set( "display_errors", false );
 date_default_timezone_set( "America/New_York" );  // http://www.php.net/manual/en/timezones.php
 define( "SERVER", "127.0.0.1:3306" );
 define('DB_NAME', 'demo');

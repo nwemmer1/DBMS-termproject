@@ -207,3 +207,22 @@ div.scrollmenu {
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
+
+.searchLeft input[type=text], .searchLeft input[type=number]{
+  width: 315px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+  opacity: 100%;
+}
+
+.searchLeft input[type="submit"], .searchLeft button{
+    border-radius: 4px;
+    width: 315px;
+    height: 40px;
+    font-size: 1em;
+    transition: all 0.5s;
+    cursor: pointer;
+}
