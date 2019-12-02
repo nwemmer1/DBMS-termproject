@@ -20,7 +20,7 @@ function dbSelect($sql, $tableHeader)
 	    exit;
 	}
 	$num_rows = mysqli_num_rows($result);
-	print "<table><caption> <h2>$tableHeader ($num_rows) </h2> </caption>";
+	print "<table id='tableExport'><caption> <h2>$tableHeader ($num_rows) </h2> </caption>";
 	print "<tr align = 'center'>";
 
 	$row = mysqli_fetch_array($result);

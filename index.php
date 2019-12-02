@@ -27,11 +27,21 @@
                     </label>
                     <label>
                         <input type="radio" name="search" value="byScholarship">Scholarship
-                    </label>
+                    </label><br>
                     <input type="text" name="searchBar">
                     <input type="submit" name="searchEnter" value="Search">
                     <input type="submit" name="dbSelect" value="Display All Employees">
                 </form>
+                <button onclick="exportTable()">Export Table Data To CSV File</button>
+                <br>
+                <div class="tooltip">
+                    <img src="images/info-icon.jpg" style="height: 20px;">
+                    <span class="tooltiptext">Example Queries:<br>
+                                                Room: CAS 229<br>
+                                                Lastname: Cheng<br>
+                                                Department: Computer Science<br>
+                                                Scholarship: By Depot Name: Cpmputer Science OR By Scholarship name: Akron Guarantee Scholarship</span>
+                </div>
             </div>
             <div class="resultsRight">
                 <h1>Results</h1>
@@ -48,18 +58,15 @@
                         //echo $searchVar;
                         $sql = " ";
                         if ($_POST['search'] == 'byRoom') {
-                            $sql = "SELECT 'ID',  first_name AS 'First Name', last_name AS 'Last Name', phone_number AS 'Phone', title AS 'Title', department AS 'Department',  teaches AS 'Classes Normally Taught', type_of_employment AS 'Full-Time/Part-Time',  email AS 'Email', office_number AS 'Office' FROM Employees WHERE office_number='$searchVar'";
+                            $sql = "SELECT employee_id AS 'ID',  first_name AS 'First Name', last_name AS 'Last Name', phone_number AS 'Phone', title AS 'Title', department AS 'Department',  teaches AS 'Classes Normally Taught', type_of_employment AS 'Full-Time/Part-Time',  email AS 'Email', office_number AS 'Office' FROM Employees WHERE office_number='$searchVar'";
                             dbSelectEmployees($sql);
                         }
                         if ($_POST['search'] == 'byLastname') {
-                            $sql = "SELECT 'ID',  first_name AS 'First Name', last_name AS 'Last Name', phone_number AS 'Phone', title AS 'Title', department AS 'Department',  teaches AS 'Classes Normally Taught', type_of_employment AS 'Full-Time/Part-Time',  email AS 'Email', office_number AS 'Office' FROM Employees WHERE last_name='$searchVar'";
+                            $sql = "SELECT employee_id AS 'ID',  first_name AS 'First Name', last_name AS 'Last Name', phone_number AS 'Phone', title AS 'Title', department AS 'Department',  teaches AS 'Classes Normally Taught', type_of_employment AS 'Full-Time/Part-Time',  email AS 'Email', office_number AS 'Office' FROM Employees WHERE last_name='$searchVar'";
                             dbSelectEmployees($sql);
                         }
                         if ($_POST['search'] == 'byDepot') {
-                            $sql = "SELECT 'ID',  first_name AS 'First Name', last_name AS 'Last Name', phone_number AS 'Phone', title AS 'Title', department AS 'Department',  teaches AS 'Classes Normally Taught', type_of_employment AS 'Full-Time/Part-Time',  email AS 'Email', office_number AS 'Office' FROM Employees WHERE department='$searchVar'";
-                            $sqlDepot = "SELECT department_name AS 'Department', building AS 'Building', numOfEmployees AS 'Employees' FROM Departments WHERE department_name='$searchVar'";
-                            dbSelect($sqlDepot, 'Department');
-                            dbSelectEmployees($sql);
+                            departmentTransaction($searchVar);
                         }
                         if ($_POST['search'] == 'byScholarship') {
                             if (strcasecmp($searchVar, 'Computer Science') == 0) {

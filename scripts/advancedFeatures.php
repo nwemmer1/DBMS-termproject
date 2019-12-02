@@ -23,7 +23,7 @@ function dbSelectEmployees($sql)
 	    exit;
 	}
 	$num_rows = mysqli_num_rows($result);
-	print "<table><caption> <h2> Employees ($num_rows) </h2> </caption>";
+	print "<table id='tableExport'><caption> <h2> Employees ($num_rows) </h2> </caption>";
 	print "<tr align = 'center'>";
 
 	$row = mysqli_fetch_array($result);
@@ -67,4 +67,98 @@ function dbSelectEmployees($sql)
 
 }
 
+function departmentTransaction($depotEntered)
+{
+	$conn = mysqli_connect(SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+	$department = mysqli_real_escape_string($conn,$depotEntered);
+	// Check connection
+	if (!$conn) {
+	    echo "connection failed";
+	}
+	try 
+	{
+    	$conn->autocommit(FALSE); // i.e., start transaction
+    	$query = "SELECT department_name AS 'Department', building AS 'Building', numOfEmployees AS 'Employees' FROM Departments WHERE department_name='$department'";
+	    $result = $conn->query($query);
+    	if ( !$result ) 
+    	{
+        	$result->free();
+       	 	throw new Exception($conn->error);
+    	}
+    	dbSelect($query, 'Department');
+	    $query = "SELECT first_name AS 'First Name',last_name AS 'Last Name',title AS 'Title', teaches AS 'Classes Normally Taught' FROM Employees WHERE department='$department'";
+	    //---
+	    $result = $conn->query($query);
+    	if ( !$result ) 
+    	{
+        	$result->free();
+        	throw new Exception($conn->error);
+    	}
+    	dbSelect($query, 'Employees');
+    	$conn->commit();
+    	$conn->autocommit(TRUE);
+	}	
+	catch ( Exception $e ) 
+	{
+	    // before rolling back the transaction, you'd want
+	    // to make sure that the exception was db-related
+	    $conn->rollback(); 
+	    $conn->autocommit(TRUE); // i.e., end transaction   
+	}
+}
+
 ?>
+
+<script type="text/javascript">
+	
+function download_csv(csv, filename) {
+    var csvFile;
+    var downloadLink;
+
+    // CSV FILE
+    csvFile = new Blob([csv], {type: "text/csv"});
+
+    // Download link
+    downloadLink = document.createElement("a");
+
+    // File name
+    downloadLink.download = filename;
+
+    // We have to create a link to the file
+    downloadLink.href = window.URL.createObjectURL(csvFile);
+
+    // Make sure that the link is not displayed
+    downloadLink.style.display = "none";
+
+    // Add the link to your DOM
+    document.body.appendChild(downloadLink);
+
+    // Lanzamos
+    downloadLink.click();
+}
+
+function export_table_to_csv(html, filename) {
+	var csv = [];
+	var rows = document.querySelectorAll("table tr");
+	
+    for (var i = 0; i < rows.length; i++) {
+		var row = [], cols = rows[i].querySelectorAll("td, th");
+		
+        for (var j = 0; j < cols.length; j++) {
+        	//console.log(cols[j].innerText.replace(/,/g, ";"));
+        	row.push(cols[j].innerText.replace(/,/g, ";"));
+        } 
+        
+		csv.push(row.join(","));		
+	}
+
+    // Download CSV
+    download_csv(csv.join("\n"), filename);
+}
+
+function exportTable() {
+    var html = document.querySelector("table").outerHTML;
+	export_table_to_csv(html, "ua_faculty_export.csv");
+}
+
+</script>
