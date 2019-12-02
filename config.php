@@ -9,7 +9,7 @@ define( "SCRIPTS_PATH", "scripts" );
 define( "TEMPLATE_PATH", "templates" );
 
 require( SCRIPTS_PATH . "/basicFeatures.php" );
-// require( SCRIPTS_PATH . "/advancedFeatures.php" );
+require( SCRIPTS_PATH . "/advancedFeatures.php" );
 // require( SCRIPTS_PATH . "/isset.php" );
 
 function handleException( $exception ) {

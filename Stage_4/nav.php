@@ -54,7 +54,7 @@
             <a href="searchName_form.php">Search by Last Name</a>
             <a href="searchDepartment_form.php">Display Department Information</a>
             <a href="displayScholarships_form.php">Search for Scholarships</a>
-            <a href="displayAllEmployees.php">Display all Employees</a>
+            <a href="dbSelect.php">Display all Employees</a>
             <a href="update_form.php">Update an Employee entry</a>
             <a href="delete_form.php">Delete an Employee entry</a>>
         </div>

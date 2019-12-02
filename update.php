@@ -87,7 +87,7 @@
                     <div class="dbResults">
                         <div class="scrollmenu">
                         <div id="rmallemployees">
-                            <?php  displayAllEmployees(null); ?>
+                            <?php  dbSelectEmployees(null); ?>
                         </div>
                         <?php 
 

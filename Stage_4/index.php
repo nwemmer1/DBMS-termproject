@@ -43,7 +43,7 @@
         <a href="searchName_form.php"><button>Search by Last Name</button></a>
         <a href="searchDepartment_form.php"><button>Display Department Information</button></a>
         <a href="displayScholarships_form.php"><button>Search for Scholarships</button></a>
-        <a href="displayAllEmployees.php"><button>Display all Employees</button></a>
+        <a href="dbSelect.php"><button>Display all Employees</button></a>
         <a href="update_form.php"><button>Update an Employee entry</button></a>
         <a href="delete_form.php"><button>Delete an Employee entry</button></a>
         </div>

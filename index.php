@@ -23,14 +23,14 @@
                         <input type="radio" name="search" value="byLastname">Lastname
                     </label>
                     <label>
-                        <input type="radio" name="search" value="byDepot">Depatment
+                        <input type="radio" name="search" value="byDepot">Department
                     </label>
                     <label>
                         <input type="radio" name="search" value="byScholarship">Scholarship
                     </label>
                     <input type="text" name="searchBar">
                     <input type="submit" name="searchEnter" value="Search">
-                    <input type="submit" name="displayAllEmployees" value="Display All Employees">
+                    <input type="submit" name="dbSelect" value="Display All Employees">
                 </form>
             </div>
             <div class="resultsRight">
@@ -40,38 +40,43 @@
                         <div class="scrollmenu">
                     <?php 
 
-                    if (isset($_POST['displayAllEmployees'])) {
-                        displayAllEmployees(null);
+                    if (isset($_POST['dbSelect'])) {
+                        dbSelectEmployees(null);
                     }
                     if (isset($_POST['searchEnter'])) {
                         $searchVar = $_POST['searchBar'];
-                        echo $searchVar;
+                        //echo $searchVar;
                         $sql = " ";
                         if ($_POST['search'] == 'byRoom') {
-                            $sql = "SELECT * FROM Employees WHERE office_number='$searchVar'";
+                            $sql = "SELECT 'ID',  first_name AS 'First Name', last_name AS 'Last Name', phone_number AS 'Phone', title AS 'Title', department AS 'Department',  teaches AS 'Classes Normally Taught', type_of_employment AS 'Full-Time/Part-Time',  email AS 'Email', office_number AS 'Office' FROM Employees WHERE office_number='$searchVar'";
+                            dbSelectEmployees($sql);
                         }
                         if ($_POST['search'] == 'byLastname') {
-                            $sql = "SELECT * FROM Employees WHERE last_name='$searchVar'";
+                            $sql = "SELECT 'ID',  first_name AS 'First Name', last_name AS 'Last Name', phone_number AS 'Phone', title AS 'Title', department AS 'Department',  teaches AS 'Classes Normally Taught', type_of_employment AS 'Full-Time/Part-Time',  email AS 'Email', office_number AS 'Office' FROM Employees WHERE last_name='$searchVar'";
+                            dbSelectEmployees($sql);
                         }
                         if ($_POST['search'] == 'byDepot') {
-                            $sql = "SELECT * FROM Employees WHERE department='$searchVar'";
+                            $sql = "SELECT 'ID',  first_name AS 'First Name', last_name AS 'Last Name', phone_number AS 'Phone', title AS 'Title', department AS 'Department',  teaches AS 'Classes Normally Taught', type_of_employment AS 'Full-Time/Part-Time',  email AS 'Email', office_number AS 'Office' FROM Employees WHERE department='$searchVar'";
+                            $sqlDepot = "SELECT department_name AS 'Department', building AS 'Building', numOfEmployees AS 'Employees' FROM Departments WHERE department_name='$searchVar'";
+                            dbSelect($sqlDepot, 'Department');
+                            dbSelectEmployees($sql);
                         }
                         if ($_POST['search'] == 'byScholarship') {
                             if (strcasecmp($searchVar, 'Computer Science') == 0) {
-                                $sql = "SELECT * FROM Scholarships WHERE department_id = '1'";
+                                $sql = "SELECT scholarship_id AS 'Scholarship ID', department_id AS 'Department ID', scholarship_name AS 'Scholarship Name', requirements AS 'Requirements', cashAmount AS 'Prize', body AS 'Body' FROM Scholarships WHERE department_id = '1'";
                             }
                             else if (strcasecmp($searchVar, 'Mathematics') == 0) {
-                                $sql = "SELECT * FROM Scholarships WHERE department_id = '2'";
+                                $sql = "SELECT scholarship_id AS 'Scholarship ID', department_id AS 'Department ID', scholarship_name AS 'Scholarship Name', requirements AS 'Requirements', cashAmount AS 'Prize', body AS 'Body' FROM Scholarships WHERE department_id = '2'";
                             }
                             else if (strcasecmp($searchVar, 'University of Akron') == 0) {
-                                $sql = "SELECT * FROM Scholarships WHERE department_id = '3'";
+                                $sql = "SELECT scholarship_id AS 'Scholarship ID', department_id AS 'Department ID', scholarship_name AS 'Scholarship Name', requirements AS 'Requirements', cashAmount AS 'Prize', body AS 'Body' FROM Scholarships WHERE department_id = '3'";
                             }
                             else {
-                                $sql = "SELECT * FROM Scholarships WHERE scholarship_name='$searchVar'";
+                                $sql = "SELECT scholarship_id AS 'Scholarship ID', department_id AS 'Department ID', scholarship_name AS 'Scholarship Name', requirements AS 'Requirements', cashAmount AS 'Prize', body AS 'Body' FROM Scholarships WHERE scholarship_name='$searchVar'";
                             }
+                            dbSelect($sql, 'Scholarships');
                         }
-                        echo $sql;
-                        displayAllEmployees($sql);
+                        //echo $sql;
                     }
 
 

@@ -1,58 +1,6 @@
-<style>
-#popup { color: #000; background-color: #c0c0c0; }
-
-#popup a, #popup a:visited {
-  position: relative;
-  display: block;
-  width: 130px;
-  line-height: 30px;
-  text-align: right;
-  padding: 0 10px;
-  margin: 0;
-  border: 1px solid #666;
-  text-decoration: none;
-  font-size: 1em;
-  font-weight: bold;
-}
-
-#popup a span {
-  display: none;
-}
-
-#popup a:hover { 
-  background-color: #e9e9e2; 
-}
-
-/* the IE correction rule */
-#popup a:hover  {
-  color: #f00; 
-  background-color: #e9e9e2;
-  text-indent: 0; /* added the default value */
-}
-
-#popup a:hover span {
-  display: block;
-  position: absolute;
-  top: 0px;
-  right: 170px;
-  width: 320px;
-  margin: 0px;
-  padding: 10px;
-  color: #335500;
-  font-weight: normal;
-  background: #e5e5e5;
-  text-align: left;
-  border: 1px solid #666;
-}
-#popup img{
-  width:500px;
-  height:500px;
-}
-</style>
-
 <?php 
 
-function displayAllEmployees($sql)
+function dbSelect($sql, $tableHeader)
 {
 	$conn = mysqli_connect(SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
@@ -61,9 +9,6 @@ function displayAllEmployees($sql)
 	    echo "connection failed";
 	}
 	// else echo "Connected successfully";
-	if ($sql == null) {
-		$sql = "SELECT employee_id AS 'ID',  first_name AS 'First Name', last_name AS 'Last Name', phone_number AS 'Phone', title AS 'Title', department AS 'Department',  teaches AS 'Classes Normally Taught', type_of_employment AS 'Full-Time/Part-Time',  email AS 'Email', office_number AS 'Office' FROM Employees";
-	}
 
 	$result = mysqli_query($conn,$sql);
 
@@ -75,7 +20,7 @@ function displayAllEmployees($sql)
 	    exit;
 	}
 	$num_rows = mysqli_num_rows($result);
-	print "<table><caption> <h2> All Employees ($num_rows) </h2> </caption>";
+	print "<table><caption> <h2>$tableHeader ($num_rows) </h2> </caption>";
 	print "<tr align = 'center'>";
 
 	$row = mysqli_fetch_array($result);
@@ -97,18 +42,7 @@ function displayAllEmployees($sql)
 	    for ($index = 0; $index < $num_fields; $index++)
 	    {
 	        $value = htmlspecialchars($values[2 * $index + 1]);
-
-	        if($index == $num_fields-1)
-	        {
-	            $valpath = str_replace(' ', '_', $value);
-
-	            $val = "<td><div id='popup'><a>" . $value . "<span><img class='imghov' src='images/" . $valpath . ".jpg'></span></a></div></td>";
-            	print $val;
-	        }
-	        else
-	        {
-	            print "<td>" . $value . "</td> ";
-	        }
+	        print "<td>" . $value . "</td> ";
 	    }
 	    
 
@@ -160,12 +94,12 @@ function insertEmployee()
 
 	echo "Entry Inserted:";
 	$insertedEntry = "SELECT employee_id AS 'ID',  first_name AS 'First Name', last_name AS 'Last Name', phone_number AS 'Phone', title AS 'Title', department AS 'Department',  teaches AS 'Classes Normally Taught', type_of_employment AS 'Full-Time/Part-Time',  email AS 'Email', office_number AS 'Office' FROM Employees WHERE employee_id = '$employee_id'";
-	displayAllEmployees($insertedEntry);
+	dbSelectEmployees($insertedEntry);
 	mysqli_close($conn);
 	echo '<script type="text/javascript">',
      'removeTable();',
      '</script>';
-	displayAllEmployees(null);
+	dbSelectEmployees(null);
 }
 
 function update()
@@ -202,12 +136,12 @@ function update()
 	}
 	echo "Entry Updated:";
 	$updatedEntry = "SELECT employee_id AS 'ID',  first_name AS 'First Name', last_name AS 'Last Name', phone_number AS 'Phone', title AS 'Title', department AS 'Department',  teaches AS 'Classes Normally Taught', type_of_employment AS 'Full-Time/Part-Time',  email AS 'Email', office_number AS 'Office' FROM Employees WHERE employee_id = '$employee_id'";
-	displayAllEmployees($updatedEntry);
+	dbSelectEmployees($updatedEntry);
 	mysqli_close($conn);
 	echo '<script type="text/javascript">',
      'removeTable();',
      '</script>';
-	displayAllEmployees(null);
+	dbSelectEmployees(null);
 }
 
 function delete()
@@ -222,7 +156,7 @@ function delete()
 
 	echo "Entry Deleted:";
 	$deletedEntry = "SELECT employee_id AS 'ID',  first_name AS 'First Name', last_name AS 'Last Name', phone_number AS 'Phone', title AS 'Title', department AS 'Department',  teaches AS 'Classes Normally Taught', type_of_employment AS 'Full-Time/Part-Time',  email AS 'Email', office_number AS 'Office' FROM Employees WHERE employee_id = '$deleted_value'";
-	displayAllEmployees($deletedEntry);
+	dbSelectEmployees($deletedEntry);
 
 	$sql = "DELETE FROM Employees where employee_id = '$deleted_value'";
 
@@ -239,7 +173,7 @@ function delete()
 	echo '<script type="text/javascript">',
      'removeTable();',
      '</script>';
-	displayAllEmployees(null);
+	dbSelectEmployees(null);
 }
 
 ?>
