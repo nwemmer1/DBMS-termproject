@@ -65,6 +65,7 @@ function displayAllEmployees($sql)
 		$sql = "SELECT employee_id AS 'ID',  first_name AS 'First Name', last_name AS 'Last Name', phone_number AS 'Phone', title AS 'Title', department AS 'Department',  teaches AS 'Classes Normally Taught', type_of_employment AS 'Full-Time/Part-Time',  email AS 'Email', office_number AS 'Office' FROM Employees";
 	}
 
+
 	$result = mysqli_query($conn,$sql);
 
 	if(!$result)
@@ -240,6 +241,56 @@ function delete()
      'removeTable();',
      '</script>';
 	displayAllEmployees(null);
+}
+function departmentTransaction($sql)
+{
+	$conn = mysqli_connect(SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+	$department = mysqli_real_escape_string($conn,$_REQUEST['department']);
+
+	// Check connection
+	if (!$conn) {
+	    echo "connection failed";
+	}
+
+	try 
+	{
+
+    	$conn->autocommit(FALSE); // i.e., start transaction
+
+    	$query = "SELECT department_name AS 'Department', building AS 'Building', numOfEmployees AS 'Employees' FROM Departments WHERE department_name='$department'"
+	    $result = $conn->query($query);
+
+    	if ( !$result ) 
+    	{
+        	$result->free();
+       	 	throw new Exception($conn->error);
+    	}
+    	displayAllEmployees($query);
+
+
+	    $query = "SELECT first_name AS 'First Name',last_name AS 'Last Name',title AS 'Title', teaches AS 'Classes Normally Taught' FROM Employees WHERE department='$department'";
+
+
+	    //---
+	    $result = $conn->query($query);
+    	if ( !$result ) 
+    	{
+        	$result->free();
+        	throw new Exception($conn->error);
+    	}
+    	displayAllEmployees($query);
+
+    	$conn->commit();
+    	$conn->autocommit(TRUE);
+	}	
+	catch ( Exception $e ) 
+	{
+
+	    // before rolling back the transaction, you'd want
+	    // to make sure that the exception was db-related
+	    $conn->rollback(); 
+	    $conn->autocommit(TRUE); // i.e., end transaction   
+	}
 }
 
 ?>
